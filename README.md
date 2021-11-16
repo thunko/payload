@@ -144,6 +144,6 @@ This can be possible by launching a temporary client pod on the cluster by runni
 
 After it you should get regular mysql prompt and run regular mysql commands.
 
-# Voila
+# Voilà
 
-Thanks
+Thanks for getting this far. Feedback is always welcome :)

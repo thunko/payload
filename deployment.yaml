@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: payload-web-service
+spec:
+  selector:
+    app: payload-web-app
+  ports:
+  - protocol: "TCP"
+    port: 80
+    targetPort: 80
+    nodePort: 30000
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payload-web-app
+spec:
+  selector:
+    matchLabels:
+      app: payload-web-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: payload-web-app
+    spec:
+      containers:
+      - name: payload-web-app
+        image: payloadimg:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        env: ##
+          - name: db_root_password
+            valueFrom:
+              secretKeyRef:
+                name: db-secrets
+                key: db_root_password
+          - name: db_name
+            value: payloads

@@ -106,6 +106,7 @@ Use the mysql-deployment.yaml file
 `$ kubectl apply -f mysql-deployment.yaml`
 
 the DB and Table is created when requesting the app. No need to create manually.
+retrieving the environment variables from the DB to the service is also defined in the app [here](https://github.com/thunko/payload/blob/5a33ba7c057d7f6b57420fa67e38869cacaaabe4/payload_dir/configs.py#L6)
 
 ## Create a deployment
 
